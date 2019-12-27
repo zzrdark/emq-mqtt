@@ -1,4 +1,4 @@
-package com.zzr.mqtt.qmemqtt;
+package com.zzr.mqtt.qmemqtt.defalut;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author zzrdark
  */
 @SpringBootApplication
-public class QmeMqttApplication {
+public class EmqMqttApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(QmeMqttApplication.class, args);
+        SpringApplication.run(EmqMqttApplication.class, args);
     }
 
 }

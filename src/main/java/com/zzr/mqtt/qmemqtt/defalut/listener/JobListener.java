@@ -1,6 +1,6 @@
-package com.zzr.mqtt.qmemqtt.listener;
+package com.zzr.mqtt.qmemqtt.defalut.listener;
 
-import com.zzr.mqtt.qmemqtt.event.MqttEvent;
+import com.zzr.mqtt.qmemqtt.defalut.event.MqttEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -19,11 +19,9 @@ public class JobListener {
      * 监听topic
      * @param mqttEvent
      */
-    @EventListener(condition = "# mqttEvent.topic.equals(T(com.zzr.mqtt.qmemqtt.utils.TopicName).ROLL_CALL_2.getValue())")
+    @EventListener(condition = "# mqttEvent.topic.equals(T(com.zzr.mqtt.qmemqtt.defalut.utils.TopicName).ROLL_CALL_2.getValue())")
     public void onEmqttCall(MqttEvent mqttEvent){
-
         log.info("接收到消息："+mqttEvent.getMessage());
-
     }
     @EventListener(condition ="@ emqttPredicate.test(#mqttEvent)")
     public void onEmqttCallTest(MqttEvent mqttEvent){

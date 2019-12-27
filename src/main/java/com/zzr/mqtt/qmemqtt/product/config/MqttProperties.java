@@ -1,4 +1,4 @@
-package com.zzr.mqtt.qmemqtt.config;
+package com.zzr.mqtt.qmemqtt.product.config;
 
 import lombok.Getter;
 import lombok.Setter;

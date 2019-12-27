@@ -1,4 +1,4 @@
-package com.zzr.mqtt.qmemqtt.utils;
+package com.zzr.mqtt.qmemqtt.consumer.utils;
 
 /**
  * @ClassName TopicName
@@ -9,7 +9,8 @@ package com.zzr.mqtt.qmemqtt.utils;
 public enum TopicName {
 
     ROLL_CALL_DEFAULT(1,"listenDefault"),
-    ROLL_CALL_2(2,"hello");
+    ROLL_CALL_2(2,"hello"),
+    ROLL_CALL_all(3,"broker/#");
 
     private final Integer key;
     private final String value;

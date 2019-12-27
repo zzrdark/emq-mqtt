@@ -1,4 +1,4 @@
-package com.zzr.mqtt.qmemqtt.event;
+package com.zzr.mqtt.qmemqtt.consumer.event;
 
 import lombok.Data;
 import org.springframework.context.ApplicationEvent;

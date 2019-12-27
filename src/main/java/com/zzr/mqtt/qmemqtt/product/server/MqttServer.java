@@ -1,5 +1,6 @@
-package com.zzr.mqtt.qmemqtt.server;
+package com.zzr.mqtt.qmemqtt.product.server;
 
+import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -15,5 +16,5 @@ import org.springframework.stereotype.Component;
 @MessagingGateway(defaultRequestChannel = "mqttOutboundChannel")
 public interface MqttServer {
 
-    void sendToMqtt(@Header(MqttHeaders.TOPIC)String topic, String data);
+    void sendToMqtt(@Header(MqttHeaders.TOPIC) String topic, String data);
 }

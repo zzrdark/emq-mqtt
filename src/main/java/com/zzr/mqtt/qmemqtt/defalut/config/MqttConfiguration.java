@@ -1,8 +1,7 @@
-package com.zzr.mqtt.qmemqtt.config;
+package com.zzr.mqtt.qmemqtt.defalut.config;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import com.zzr.mqtt.qmemqtt.event.MqttEvent;
-import com.zzr.mqtt.qmemqtt.utils.TopicName;
+import com.zzr.mqtt.qmemqtt.defalut.config.MqttProperties;
+import com.zzr.mqtt.qmemqtt.defalut.event.MqttEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,6 @@ import org.springframework.integration.mqtt.support.DefaultPahoMessageConverter;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
-
-import java.util.Arrays;
 
 /**
  * @ClassName MqttConfiguration
@@ -74,6 +71,12 @@ public class MqttConfiguration {
         return adapter;
     }
 
+    /**
+     * 事件触发
+     */
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
+
     //通过通道获取数据
     @Bean
     @ServiceActivator(inputChannel = "mqttInputChannel")
@@ -82,12 +85,16 @@ public class MqttConfiguration {
             @Override
             public void handleMessage(Message<?> message) {
                 String topic = message.getHeaders().get("mqtt_receivedTopic").toString();
-                String type = topic.substring(topic.lastIndexOf("/")+1, topic.length());
-                if("hello".equalsIgnoreCase(topic)){
+//                String type = topic.substring(topic.lastIndexOf("/")+1, topic.length());
+                String qos = message.getHeaders().get("mqtt_receivedQos").toString();
+               /*if("hello".equalsIgnoreCase(topic)){
                     System.out.println("hello,fuckXX,"+message.getPayload().toString());
                 }else if("hello1".equalsIgnoreCase(topic)){
                     System.out.println("hello1,fuckXX,"+message.getPayload().toString());
-                }
+                }*/
+
+                eventPublisher.publishEvent(new MqttEvent(this,topic,message.getPayload().toString()));
+                log.info("topic:"+topic+" Qos:"+qos+" message:"+message.getPayload());
             }
         };
     }

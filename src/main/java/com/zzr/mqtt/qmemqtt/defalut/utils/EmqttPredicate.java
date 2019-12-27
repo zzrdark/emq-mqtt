@@ -1,6 +1,6 @@
-package com.zzr.mqtt.qmemqtt.utils;
+package com.zzr.mqtt.qmemqtt.defalut.utils;
 
-import com.zzr.mqtt.qmemqtt.event.MqttEvent;
+import com.zzr.mqtt.qmemqtt.defalut.event.MqttEvent;
 import org.springframework.stereotype.Component;
 
 /**
